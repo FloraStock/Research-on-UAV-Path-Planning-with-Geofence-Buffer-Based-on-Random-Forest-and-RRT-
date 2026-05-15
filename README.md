@@ -1,1 +1,42 @@
-# Research-on-UAV-Path-Planning-with-Geofence-Buffer-Based-on-Random-Forest-and-RRT-
+# 基于随机森林与地理围栏缓冲约束下 RRT* 的 UAV 路径规划系统
+
+**本科毕业设计代码仓库**  
+**题目**：基于随机森林与地理围栏缓冲约束下 RRT* 的 UAV 路径规划研究  
+**学生**：曹语芯  
+**学号**：202283710033  
+**专业**：数据科学与大数据技术  
+**指导教师**：刘传德  
+
+---
+
+## 项目简介
+
+本项目完整实现了毕业论文的核心实验内容：
+- 严格复现了参考论文（`Application+of+Geofence+Buffer+Zones+in+UAV+Path+Following.pdf`）中的**地理围栏缓冲约束**（r1=0.3m 硬约束 + r2=0.1m 安全裕度）
+- 实现了**三种高质量RRT*** 规划器（标准RRT*、Informed RRT*、Safe RRT*）
+- 开发了**完整Tkinter GUI界面**，支持交互式规划、统计实验、三种方法对比
+- 新增**高质量3D可视化**（严格参考 `Plot_3D.m`），可直接生成论文插图
+- 集成**随机森林缓冲区动态决策模型**（ML模块）
+
+所有核心逻辑与原始MATLAB代码（`map_circle_12.m`、`Plot_3D.m` 等）保持高度一致，可直接用于毕业论文第5章实验结果展示。
+
+---
+
+## 主要功能
+
+- ✅ **交互式GUI**：场景选择、缓冲区半径调节、算法切换
+- ✅ **三种RRT*算法**：RRT*（标准）、Informed RRT*、Safe RRT*（安全裕度优先）
+- ✅ **2D + 3D可视化**：3D图严格复现MATLAB `uavScenario` 风格（含3D柱体障碍物、无地面穿插、更俯视视角）
+- ✅ **统计实验**：支持多次重复实验，自动生成成功率、路径长度、规划时间、安全裕度等指标
+- ✅ **三种方法对比表格**：一键生成论文Table 4.2所需数据
+- ✅ **随机森林缓冲决策**：动态判断是否需要开启缓冲区（ML模块）
+- ✅ **自动保存**：所有图表自动保存至 `results/figures/`，可直接用于论文
+
+---
+
+## 环境要求
+
+- **Python 3.8+**
+- 主要依赖库（运行前安装）：
+  ```bash
+  pip install numpy matplotlib shapely pandas scikit-learn tqdm tk
